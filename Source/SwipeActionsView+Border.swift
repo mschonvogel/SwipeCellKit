@@ -7,7 +7,7 @@ extension SwipeActionsView {
         let rgbValue: CGFloat = 230/255
         self.layer.borderColor = UIColor(red: rgbValue, green: rgbValue, blue: rgbValue, alpha: 1).cgColor
         self.backgroundColor = UIColor.blue
-        self.layer.borderWidth = 5
+        self.layer.borderWidth = 0.5
     }
 
 }
