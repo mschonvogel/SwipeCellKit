@@ -97,6 +97,12 @@ class SwipeActionsView: UIView {
         backgroundColor = options.backgroundColor ?? #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
         
         buttons = addButtons(for: self.actions, withMaximum: maxSize)
+        
+        // Not elegant, at all, but this will do for now. Should refactor later when we have more time.
+        let bottomBorder = UIView()
+        let rgbValue: CGFloat = 230/255
+        self.layer.borderColor = UIColor(red: rgbValue, green: rgbValue, blue: rgbValue, alpha: 1).cgColor
+        self.layer.borderWidth = 0.05
     }
     
     required init?(coder aDecoder: NSCoder) {
