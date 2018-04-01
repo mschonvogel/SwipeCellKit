@@ -108,7 +108,7 @@ open class SwipeTableViewCell: UICollectionViewCell, UIGestureRecognizerDelegate
     }
     
     /// :nodoc:
-    func handlePan(gesture: UIPanGestureRecognizer) {
+    @objc func handlePan(gesture: UIPanGestureRecognizer) {
 
         guard let target = gesture.view else { return }
         
@@ -315,11 +315,11 @@ open class SwipeTableViewCell: UICollectionViewCell, UIGestureRecognizerDelegate
         }
     }
 
-    func handleTap(gesture: UITapGestureRecognizer) {
+    @objc func handleTap(gesture: UITapGestureRecognizer) {
         hideSwipe(animated: true)
     }
     
-    func handleTablePan(gesture: UIPanGestureRecognizer) {
+    @objc func handleTablePan(gesture: UIPanGestureRecognizer) {
         if gesture.state == .began {
             hideSwipe(animated: true)
         }
@@ -416,7 +416,7 @@ extension SwipeTableViewCell {
      - parameter completion: The closure to be executed once the animation has finished. A `Boolean` argument indicates whether or not the animations actually finished before the completion handler was called.
      */
     public func showSwipe(orientation: SwipeActionsOrientation, animated: Bool = true, completion: ((Bool) -> Void)? = nil) {
-        setSwipeOffset(.greatestFiniteMagnitude * orientation.scale.negated(),
+        setSwipeOffset(.greatestFiniteMagnitude * orientation.scale * -1,
                        animated: animated,
                        completion: completion)
     }
@@ -447,7 +447,7 @@ extension SwipeTableViewCell {
             state = targetState
         }
         
-        let maxOffset = min(bounds.width, abs(offset)) * orientation.scale.negated()
+        let maxOffset = min(bounds.width, abs(offset)) * orientation.scale * -1
         let targetCenter = abs(offset) == CGFloat.greatestFiniteMagnitude ? self.targetCenter(active: true) : bounds.midX + maxOffset
         
         if animated {
