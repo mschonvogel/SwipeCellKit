@@ -277,7 +277,7 @@ class MailCell: SwipeTableViewCell {
         
         subjectLabel.numberOfLines = 0
         subjectLabel.translatesAutoresizingMaskIntoConstraints = false
-        subjectLabel.setContentHuggingPriority(UILayoutPriorityRequired, for: .vertical)
+        subjectLabel.setContentHuggingPriority(UILayoutPriority.required, for: .vertical)
         views["subjectLabel"] = subjectLabel
         contentView.addSubview(subjectLabel)
         
